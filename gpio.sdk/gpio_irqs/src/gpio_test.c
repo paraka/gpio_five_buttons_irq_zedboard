@@ -1,0 +1,150 @@
+/*
+ * gpio_test.c
+ *
+ *  Created on: 04/12/2017
+ *      Author: sergio
+ */
+
+#include <stdio.h> /* printf */
+#include "xparameters.h"
+#include "xscugic.h"
+#include "xil_exception.h"
+#include "xgpio.h"
+
+/* Parameter definitions */
+#define INTC_DEVICE_ID 			XPAR_PS7_SCUGIC_0_DEVICE_ID
+#define BTNS_DEVICE_ID			XPAR_AXI_GPIO_0_DEVICE_ID
+#define INTC_GPIO_INTERRUPT_ID 	XPAR_FABRIC_AXI_GPIO_0_IP2INTC_IRPT_INTR
+#define BTN_INT 				XGPIO_IR_CH1_MASK /* This is the interrupt mask for channel one */
+#define DELAY 					100000000
+
+/* globals */
+static XGpio   BTNInst;
+static XScuGic INTCInst;
+static int btn_value;
+
+enum
+{
+	BTNC = 1,
+	BTND = 2,
+	BTNL = 4,
+	BTNR = 8,
+	BTNU = 16,
+};
+
+/* prototypes */
+static void btn_irq_handler(void *baseaddr_p);
+static int InterruptSystemSetup(XScuGic *XScuGicInstancePtr);
+static int IntcInitFunction(u16 DeviceId, XGpio *GpioInstancePtr);
+
+/* irq handler */
+static void btn_irq_handler(void *InstancePtr)
+{
+	/* Ignore additional button presses */
+	if ((XGpio_InterruptGetStatus(&BTNInst) & BTN_INT) != BTN_INT)
+	{
+		/* Disable GPIO interrupts */
+		XGpio_InterruptDisable(&BTNInst, BTN_INT);
+		return;
+	}
+
+	btn_value = XGpio_DiscreteRead(&BTNInst, 1);
+	switch (btn_value)
+	{
+		case BTNC:
+			printf("BTNC WAS PRESSED\n");
+			break;
+		case BTND:
+			printf("BTND WAS PRESSED\n");
+			break;
+		case BTNL:
+			printf("BTNL WAS PRESSED\n");
+			break;
+		case BTNR:
+			printf("BTNR WAS PRESSED\n");
+			break;
+		case BTNU:
+			printf("BTNU WAS PRESSED\n");
+			break;
+		default:
+			break;
+	}
+
+	/* Acknowledge GPIO interrupts */
+	(void)XGpio_InterruptClear(&BTNInst, BTN_INT);
+
+	/* Enable GPIO interrupts */
+	XGpio_InterruptEnable(&BTNInst, BTN_INT);
+}
+
+static int IntcInitFunction(u16 DeviceId, XGpio *GpioInstancePtr)
+{
+	XScuGic_Config *IntcConfig;
+	int status;
+
+	/* Interrupt controller initialization */
+	IntcConfig = XScuGic_LookupConfig(DeviceId);
+	status = XScuGic_CfgInitialize(&INTCInst, IntcConfig, IntcConfig->CpuBaseAddress);
+	if(status != XST_SUCCESS) return XST_FAILURE;
+
+	/* Interrupt setup function */
+	status = InterruptSystemSetup(&INTCInst);
+	if(status != XST_SUCCESS) return XST_FAILURE;
+
+	/* Register GPIO interrupt handler */
+	status = XScuGic_Connect(&INTCInst,
+					  	  	 INTC_GPIO_INTERRUPT_ID,
+					  	  	 (Xil_ExceptionHandler)btn_irq_handler,
+					  	  	 (void *)GpioInstancePtr);
+
+	if(status != XST_SUCCESS) return XST_FAILURE;
+
+	/* Enable GPIO interrupts */
+	XGpio_InterruptEnable(GpioInstancePtr, 1);
+	XGpio_InterruptGlobalEnable(GpioInstancePtr);
+
+	/* Enable GPIO interrupts in the controller */
+	XScuGic_Enable(&INTCInst, INTC_GPIO_INTERRUPT_ID);
+
+	return XST_SUCCESS;
+}
+
+static int InterruptSystemSetup(XScuGic *XScuGicInstancePtr)
+{
+	/* Register GIC interrupt handler */
+	Xil_ExceptionRegisterHandler(XIL_EXCEPTION_ID_INT,
+			 	 	 	 	 	 (Xil_ExceptionHandler)XScuGic_InterruptHandler,
+			 	 	 	 	 	 XScuGicInstancePtr);
+	Xil_ExceptionEnable();
+
+	return XST_SUCCESS;
+}
+
+int main (void)
+{
+	int status;
+	unsigned int i;
+
+	/* Initialize Push Buttons */
+	status = XGpio_Initialize(&BTNInst, BTNS_DEVICE_ID);
+	if (status != XST_SUCCESS) return XST_FAILURE;
+
+	/* Set all buttons direction to inputs */
+	XGpio_SetDataDirection(&BTNInst, 1, 0xFF);
+
+	/* Initialize interrupt controller */
+	status = IntcInitFunction(INTC_DEVICE_ID, &BTNInst);
+
+	if (status != XST_SUCCESS) return XST_FAILURE;
+
+	/* just wait for interrupts pressing buttons ... */
+	while (1)
+	{
+		/* software delay */
+		for (i = 0; i <= DELAY ; i++)
+			;
+	}
+
+	/* Never reached on normal execution */
+	return 0;
+}

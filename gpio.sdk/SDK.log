@@ -1,0 +1,98 @@
+08:50:09 INFO  : Processing command line option -hwspec /home/sergio/gpio/gpio.sdk/system_wrapper.hdf.
+08:50:14 INFO  : Launching XSDB server: xsdb -s /opt/Xilinx/SDK/2014.4/scripts/xsdb/xsdb/xsdb-server.tcl 2450
+08:57:43 INFO  : Successfully generated /home/sergio/gpio/gpio.sdk/gpio_irqs/src/lscript.ld.
+08:57:43 INFO  : Applying linker script to all configurations of project gpio_irqs.
+08:57:43 INFO  : Setting rebuild state to true for all configurations of project gpio_irqs.
+08:58:04 INFO  : Successfully generated /home/sergio/gpio/gpio.sdk/gpio_irqs/src/lscript.ld.
+08:58:04 INFO  : Applying linker script to all configurations of project gpio_irqs.
+08:58:04 INFO  : Setting rebuild state to true for all configurations of project gpio_irqs.
+08:58:47 ERROR : FPGA Configuration failed.Connection to Board Failed
+
+
+    Unknown Error Occured
+    Cable is not connected to the host
+
+09:08:56 ERROR : FPGA Configuration failed.Connection to Board Failed
+
+
+    Unknown Error Occured
+    Cable is not connected to the host
+
+09:29:04 ERROR : Unexpected error while parsing XMD response ￿: com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: invalid number or unquoted string near 
+09:34:46 INFO  : Processing command line option -hwspec /home/sergio/gpio/gpio.sdk/system_wrapper.hdf.
+09:34:47 INFO  : Launching XSDB server: xsdb -s /opt/Xilinx/SDK/2014.4/scripts/xsdb/xsdb/xsdb-server.tcl 2450
+09:34:47 INFO  : Checking for hwspec changes in the project system_wrapper_hw_platform_0.
+09:34:55 ERROR : FPGA Configuration failed.Connection to Board Failed
+
+
+    Unknown Error Occured
+    Cable is not connected to the host
+
+10:41:41 INFO  : Saving hardware specification preferences.
+10:41:41 INFO  : Starting the monitor for source hardware specification changes.
+10:41:41 INFO  : Saving repository preferences.
+10:41:41 INFO  : Saving BSP preferences.
+10:41:41 INFO  : Saving flash programming preferences.
+10:41:49 INFO  : FPGA configured successfully with bitstream "/home/sergio/gpio/gpio.sdk/system_wrapper_hw_platform_0/system_wrapper.bit"
+10:43:06 INFO  : ps7_init is completed.
+10:43:07 INFO  : ps7_post_config is completed.
+10:43:07 INFO  : Processor reset is completed for ps7_cortexa9_0
+10:43:45 INFO  : ps7_cortexa9_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+10:43:48 INFO  : Processor reset is completed for ps7_cortexa9_0
+10:45:00 INFO  : Processor reset is completed for ps7_cortexa9_0
+10:45:00 ERROR : Unexpected error while opening JTAG UART: 
+java.lang.RuntimeException: Error while opening JTAG UART server: MDM Uart NOT Present in the System
+Could not detect MDM peripheral on hardware. Please check:
+    1. If FPGA is configured correctly
+    2. MDM Core is instantiated in the design
+    3. If the correct FPGA is referred, in case of multiple FPGAs
+    4. If the correct MDM is referred, in case of a multiple MDM system
+    
+
+	at com.xilinx.sdk.targetmanager.internal.TM.startJTAGUARTServer(TM.java:931)
+	at com.xilinx.sdk.debug.core.internal.comm.JTAGUARTStreamsProxy.<init>(JTAGUARTStreamsProxy.java:32)
+	at com.xilinx.sdk.debug.core.internal.RemoteProcess.createStreamsProxy(RemoteProcess.java:164)
+	at com.xilinx.sdk.debug.core.internal.RemoteProcess.<init>(RemoteProcess.java:65)
+	at com.xilinx.sdk.debug.core.internal.AppRunner.run(AppRunner.java:91)
+	at com.xilinx.sdk.debug.core.XilinxAppLaunchConfigurationDelegate.runApplication(XilinxAppLaunchConfigurationDelegate.java:605)
+	at com.xilinx.sdk.debug.core.XilinxAppLaunchConfigurationDelegate.launch(XilinxAppLaunchConfigurationDelegate.java:293)
+	at com.xilinx.sdk.debug.ui.XilinxAppLaunchDelegateWrapper.launch(XilinxAppLaunchDelegateWrapper.java:31)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:858)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:707)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1018)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$8.run(DebugUIPlugin.java:1222)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+10:49:25 INFO  : ps7_cortexa9_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+10:49:30 INFO  : Processor reset is completed for ps7_cortexa9_0
+10:49:30 ERROR : Unexpected error while opening JTAG UART: 
+java.lang.RuntimeException: Error while opening JTAG UART server: MDM Uart NOT Present in the System
+Could not detect MDM peripheral on hardware. Please check:
+    1. If FPGA is configured correctly
+    2. MDM Core is instantiated in the design
+    3. If the correct FPGA is referred, in case of multiple FPGAs
+    4. If the correct MDM is referred, in case of a multiple MDM system
+    
+
+	at com.xilinx.sdk.targetmanager.internal.TM.startJTAGUARTServer(TM.java:931)
+	at com.xilinx.sdk.debug.core.internal.comm.JTAGUARTStreamsProxy.<init>(JTAGUARTStreamsProxy.java:32)
+	at com.xilinx.sdk.debug.core.internal.RemoteProcess.createStreamsProxy(RemoteProcess.java:164)
+	at com.xilinx.sdk.debug.core.internal.RemoteProcess.<init>(RemoteProcess.java:65)
+	at com.xilinx.sdk.debug.core.internal.AppRunner.run(AppRunner.java:91)
+	at com.xilinx.sdk.debug.core.XilinxAppLaunchConfigurationDelegate.runApplication(XilinxAppLaunchConfigurationDelegate.java:605)
+	at com.xilinx.sdk.debug.core.XilinxAppLaunchConfigurationDelegate.launch(XilinxAppLaunchConfigurationDelegate.java:293)
+	at com.xilinx.sdk.debug.ui.XilinxAppLaunchDelegateWrapper.launch(XilinxAppLaunchDelegateWrapper.java:31)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:858)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:707)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1018)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$8.run(DebugUIPlugin.java:1222)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+10:49:53 INFO  : ps7_cortexa9_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+10:50:10 INFO  : Processor reset is completed for ps7_cortexa9_0
+10:55:03 INFO  : ps7_cortexa9_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+10:55:05 INFO  : Processor reset is completed for ps7_cortexa9_0
+10:59:13 INFO  : ps7_cortexa9_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+10:59:15 INFO  : Processor reset is completed for ps7_cortexa9_0
+11:09:43 INFO  : ps7_cortexa9_0 Processor is in use. Please stop existing Run or Debug sessions before launching.
+11:09:46 INFO  : Processor reset is completed for ps7_cortexa9_0
+11:10:10 INFO  : Processor reset is completed for ps7_cortexa9_0
+11:14:54 INFO  : Processor reset is completed for ps7_cortexa9_0

@@ -1,0 +1,21 @@
+11:15:31 **** Auto Build of configuration Debug for project gpio_irqs ****
+make all 
+Building file: ../src/gpio_test.c
+Invoking: ARM gcc compiler
+arm-xilinx-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/gpio_test.o" -I../../gpio_irqs_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/gpio_test.d" -MT"src/gpio_test.d" -o "src/gpio_test.o" "../src/gpio_test.c"
+Finished building: ../src/gpio_test.c
+ 
+Building target: gpio_irqs.elf
+Invoking: ARM gcc linker
+arm-xilinx-eabi-gcc -Wl,-T -Wl,../src/lscript.ld -L../../gpio_irqs_bsp/ps7_cortexa9_0/lib -o "gpio_irqs.elf"  ./src/gpio_test.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: gpio_irqs.elf
+ 
+Invoking: ARM Print Size
+arm-xilinx-eabi-size gpio_irqs.elf  |tee "gpio_irqs.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  37396	   2984	  17540	  57920	   e240	gpio_irqs.elf
+Finished building: gpio_irqs.elf.size
+ 
+
+11:15:31 Build Finished (took 180ms)
+

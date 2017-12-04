@@ -1,0 +1,16 @@
+com.xilinx.sdk.linkgen.prefs.gpio_irqs\:.bss=ps7_ram_0_S_AXI_BASEADDR
+com.xilinx.sdk.linkgen.prefs.gpio_irqs\:.data=ps7_ram_0_S_AXI_BASEADDR
+com.xilinx.sdk.linkgen.prefs.gpio_irqs\:.data1=ps7_ram_0_S_AXI_BASEADDR
+com.xilinx.sdk.linkgen.prefs.gpio_irqs\:.fixup=ps7_ram_0_S_AXI_BASEADDR
+com.xilinx.sdk.linkgen.prefs.gpio_irqs\:.rodata=ps7_ram_0_S_AXI_BASEADDR
+com.xilinx.sdk.linkgen.prefs.gpio_irqs\:.rodata1=ps7_ram_0_S_AXI_BASEADDR
+com.xilinx.sdk.linkgen.prefs.gpio_irqs\:.sbss=ps7_ram_0_S_AXI_BASEADDR
+com.xilinx.sdk.linkgen.prefs.gpio_irqs\:.sbss2=ps7_ram_0_S_AXI_BASEADDR
+com.xilinx.sdk.linkgen.prefs.gpio_irqs\:.sdata=ps7_ram_0_S_AXI_BASEADDR
+com.xilinx.sdk.linkgen.prefs.gpio_irqs\:.sdata2=ps7_ram_0_S_AXI_BASEADDR
+com.xilinx.sdk.linkgen.prefs.gpio_irqs\:.text=ps7_ram_0_S_AXI_BASEADDR
+com.xilinx.sdk.linkgen.prefs.gpio_irqs\:Heap=ps7_ram_0_S_AXI_BASEADDR
+com.xilinx.sdk.linkgen.prefs.gpio_irqs\:Heap-size=1024
+com.xilinx.sdk.linkgen.prefs.gpio_irqs\:Stack=ps7_ram_0_S_AXI_BASEADDR
+com.xilinx.sdk.linkgen.prefs.gpio_irqs\:Stack-size=10240
+eclipse.preferences.version=1

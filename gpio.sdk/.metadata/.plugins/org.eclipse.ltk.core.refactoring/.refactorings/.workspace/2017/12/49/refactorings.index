@@ -1,0 +1,6 @@
+1512373995724	Delete resource 'gpio_irqs/src/gpio_test'
+1512374139482	Delete resource 'gpio_irqs/src/helloworld.c'
+1512374196663	Delete resource 'gpio_irqs/src/platform_config.h'
+1512374201423	Delete resource 'gpio_irqs/src/platform.c'
+1512374206246	Delete resource 'gpio_irqs/src/platform.h'
+1512374277050	Delete resource 'gpio_irqs/src/lscript.ld'

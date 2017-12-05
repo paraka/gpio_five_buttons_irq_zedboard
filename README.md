@@ -25,3 +25,5 @@ Target platform is zynq 7000 zedboard.
 Just use Xilinx SDK with the project is included in this repo and there should not be any problem to make a correct deploy.
 
 Enjoy!
+
+Thanks to https://embeddedcentric.com for inspiration.
